@@ -16,6 +16,31 @@ link.exe /nologo /SUBSYSTEM:EFI_APPLICATION /ENTRY:EFI_MAIN /MACHINE:X64 space.o
 The compiled BOOTX64.EFI program must be placed in the EFI/BOOT/ directory of an EFI partition on a disk using a GPT. <br>
 The program can be run by entering the firmware settings, turning off secure boot, and selecting the disk as the device to boot from. 
 
+## Building on Linux
+
+### Prerequisites
+Install the required tools:
+```bash
+sudo apt-get install asmc-linux qemu-system-x86 ovmf dosfstools
+```
+
+### Build
+Build the game and create an ESP disk image:
+```bash
+sudo ./build.sh
+```
+
+### Run in QEMU
+Launch the game in QEMU with UEFI:
+```bash
+./run_qemu.sh
+```
+
+The game should boot automatically. If you see the UEFI Shell instead, type:
+```
+FS0:
+\EFI\BOOT\BOOTX64.efi
+```
 
 ## Built in Options
 ### Hardware upscaling
