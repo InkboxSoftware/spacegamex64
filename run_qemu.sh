@@ -34,6 +34,7 @@ echo ""
 
 # Run QEMU
 qemu-system-x86_64 \
+    -cpu qemu64,+rdrand \
     -bios "$OVMF" \
     -drive file=esp.img,format=raw \
     -m 2048
